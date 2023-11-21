@@ -24,9 +24,6 @@ imap {<tab> {}<Left>
 imap {<CR> {<CR>}<ESC>O
 imap {;<CR> {<CR>};<ESC>O
 
-set updatetime=0
-autocmd CursorHoldI,CursorHold * silent! update
-
 command! MakeTags !ctags -R .
 
 syntax on
