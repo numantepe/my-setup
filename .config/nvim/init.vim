@@ -39,3 +39,6 @@ if has('gui_running') || has('nvim') && exists('$DISPLAY')
 else
 	noremap <silent> <leader>y "zy:Yank<CR>
 endif
+
+:colorscheme handmade-hero
+
