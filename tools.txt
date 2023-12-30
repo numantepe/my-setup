@@ -1,3 +1,0 @@
-Iterm2 + oh-my-zsh
-TMux
-ChatGPT
