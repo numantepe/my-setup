@@ -40,5 +40,3 @@ else
 	noremap <silent> <leader>y "zy:Yank<CR>
 endif
 
-:colorscheme handmade-hero
-
