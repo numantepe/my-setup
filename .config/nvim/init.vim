@@ -96,3 +96,10 @@ if executable('clangd')
         \ 'whitelist': ['c', 'cpp'],
         \ })
 endif
+
+let g:lsp_diagnostics_enabled = 0         " disable diagnostics support
+let g:lsp_document_highlight_enabled = 0
+set signcolumn=no
+
+
+
