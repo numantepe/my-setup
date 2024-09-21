@@ -63,6 +63,7 @@ endif
 " au FileType gitcommit set tw=72
 
 set noundofile
+set noswapfile
 set nobackup
 
 set hlsearch
