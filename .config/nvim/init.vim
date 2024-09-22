@@ -81,6 +81,9 @@ nnoremap L :tabn<CR>
 nnoremap H :tabp<CR>
 nnoremap N :tab split<CR>
 
+tnoremap <leader>n <C-\><C-N>
+nnoremap <leader>t :tab terminal<CR>
+
 " LSP
 " https://github.com/prabirshrestha/vim-lsp
 " https://github.com/mattn/vim-lsp-settings
