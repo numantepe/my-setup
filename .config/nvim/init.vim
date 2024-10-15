@@ -1,5 +1,6 @@
 imap jj <Esc>
 
+set ttymouse=xterm2
 set mouse=a
 
 autocmd BufEnter * lcd %:p:h
