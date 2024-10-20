@@ -27,7 +27,7 @@ imap {;<CR> {<CR>};<ESC>O
 command! MakeTags !ctags -R .
 
 syntax on
-:set number
+:set number relativenumber
 
 set noundofile
 set noswapfile
@@ -61,6 +61,10 @@ call plug#end()
 let g:lsp_diagnostics_enabled = 0 
 let g:lsp_document_highlight_enabled = 0
 set signcolumn=no
+
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
 " https://sunaku.github.io/tmux-yank-osc52.html
 
