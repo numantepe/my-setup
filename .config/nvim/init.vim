@@ -51,6 +51,10 @@ nnoremap N :tab split<CR>
 tnoremap <leader>n <C-\><C-N>
 nnoremap <leader>t :tab terminal<CR>
 
+nnoremap < ye:!grep "<C-R>" *\(\(=[^=]\)\\|{\)\(\(\)\)" -i -n .<CR>
+nnoremap > ye:!grep "<C-R>" "" -i -n .<CR>
+nnoremap <C-L> :!grep "<C-R>" "" -i -n .<CR>
+
 call plug#begin()
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
