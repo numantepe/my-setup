@@ -1,5 +1,7 @@
 imap jj <Esc>
 
+set colorscheme wildcharm
+
 set mouse=a
 
 autocmd BufEnter * lcd %:p:h
@@ -27,7 +29,7 @@ imap {;<CR> {<CR>};<ESC>O
 command! MakeTags !ctags -R .
 
 syntax on
-:set number relativenumber
+set number relativenumber
 
 set noundofile
 set noswapfile
@@ -55,11 +57,19 @@ nnoremap < ye:!grep "<C-R>" *\(\(=[^=]\)\\|{\)\(\(\)\)" -i -n .<CR>
 nnoremap > ye:!grep "<C-R>" "" -i -n .<CR>
 nnoremap <C-L> :!grep "<C-R>" "" -i -n .<CR>
 
+function! YankFunction() abort
+  let l:text = getreg('z')
+  let l:command = 'echo ' . shellescape(l:text) . ' | yank'
+  call system(l:command)
+endfunction
+nnoremap <silent> <leader>y "zyy:call YankFunction()<CR>
+vnoremap <silent> <leader>y "zy:call YankFunction()<CR>
+
 call plug#begin()
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
+  Plug 'prabirshrestha/vim-lsp'
+  Plug 'mattn/vim-lsp-settings'
+  Plug 'prabirshrestha/asyncomplete.vim'
+  Plug 'prabirshrestha/asyncomplete-lsp.vim'
 call plug#end()
 
 let g:lsp_diagnostics_enabled = 0 
@@ -69,10 +79,3 @@ set signcolumn=no
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
-
-" https://sunaku.github.io/tmux-yank-osc52.html
-
-noremap <Leader>y "*y
-noremap <Leader>Y "+y
-noremap <Leader>p "*p
-noremap <Leader>P "+p
