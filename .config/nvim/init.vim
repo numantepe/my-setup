@@ -1,6 +1,6 @@
 imap jj <Esc>
 
-set colorscheme wildcharm
+colorscheme wildcharm
 
 set mouse=a
 
