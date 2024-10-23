@@ -13,3 +13,15 @@ nnoremap <silent> <leader>y "zyy:call YankFunction()<CR>
 vnoremap <silent> <leader>y "zy:call YankFunction()<CR>
 
 
+
+
+
+function! YankFunction() abort
+  let l:text = getreg('z')
+  let l:command = 'echo ' . shellescape(l:text) . ' | yank'
+  " Open a new terminal window to run the yank command and close it automatically
+  call system('xterm -hold -e "sh -c ' . shellescape(l:command) . '" &')
+endfunction
+
+nnoremap <silent> <leader>y "zyy:call YankFunction()<CR>
+vnoremap <silent> <leader>y "zy:call YankFunction()<CR>
