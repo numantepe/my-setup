@@ -1,19 +1,14 @@
 There is some new stuff about OSC 52 suraj yank stuff so check that out
+function! YankFunction() abort
+  let l:text = getreg('z')
+  let l:command = 'echo ' . shellescape(l:text) . ' | yank'
+  let l:output = system(l:command)
 
-function! Yank(text) abort
-  echom "Yanking text: " . a:text
-  let escape = system('yank', a:text)
+  " Write the output or error to a log file
+  call writefile([l:output], expand('~/yank_output.log'), 'a')
+
   if v:shell_error
-    echoerr "Yank error: " . escape
-  else
-    call writefile([escape], '/dev/tty', 'b')
+    call writefile(['Error code: ' . v:shell_error], expand('~/yank_output.log'), 'a')
   endif
 endfunction
 
-noremap <silent> <Leader>y y:<C-U>call Yank(@0)<CR>
-
-function! CopyYank() abort
-  call Yank(join(v:event.regcontents, "\n"))
-endfunction
-
-autocmd TextYankPost * call CopyYank()
