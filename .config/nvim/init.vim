@@ -57,13 +57,8 @@ nnoremap < ye:!grep "<C-R>" *\(\(=[^=]\)\\|{\)\(\(\)\)" -i -n .<CR>
 nnoremap > ye:!grep "<C-R>" "" -i -n .<CR>
 nnoremap <C-L> :!grep "<C-R>" "" -i -n .<CR>
 
-function! YankFunction() abort
-  let l:text = getreg('z')
-  let l:command = 'echo ' . shellescape(l:text) . ' | yank'
-  call system(l:command)
-endfunction
-nnoremap <silent> <leader>y "zyy:call YankFunction()<CR>
-vnoremap <silent> <leader>y "zy:call YankFunction()<CR>
+command! Yank call system('echo ' . shellescape(@z) . ' | ' . 'yank')
+noremap <silent> <leader>y "zy:Yank<CR>
 
 call plug#begin()
   Plug 'prabirshrestha/vim-lsp'
