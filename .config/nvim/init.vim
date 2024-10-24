@@ -1,8 +1,7 @@
 imap jj <Esc>
 
-colorscheme wildcharm
-
-set mouse=a
+set ttymouse=xterm2
+set mouse+=a
 
 autocmd BufEnter * if &buftype != 'terminal' | lcd %:p:h | endif 
 
@@ -72,7 +71,3 @@ set signcolumn=no
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
-
-nmap <leader>c <Plug>OSCYankOperator
-nmap <leader>cc <leader>c_
-vmap <leader>c <Plug>OSCYankVisual
