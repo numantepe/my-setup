@@ -65,6 +65,7 @@ call plug#begin()
   Plug 'mattn/vim-lsp-settings'
   Plug 'prabirshrestha/asyncomplete.vim'
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
+  Plug 'ojroques/vim-oscyank', {'branch': 'main'}
 call plug#end()
 
 let g:lsp_diagnostics_enabled = 0 
@@ -74,3 +75,30 @@ set signcolumn=no
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+
+vim.keymap.set('n', '<leader>c', '<Plug>OSCYankOperator')
+vim.keymap.set('n', '<leader>cc', '<leader>c_', {remap = true})
+vim.keymap.set('v', '<leader>c', '<Plug>OSCYankVisual')
+
+let g:oscyank_max_length = 0  " maximum length of a selection
+let g:oscyank_silent     = 0  " disable message on successful copy
+let g:oscyank_trim       = 0  " trim surrounding whitespaces before copy
+let g:oscyank_osc52      = "\x1b]52;c;%s\x07"  " the OSC52 format string to use
+
+if (!has('nvim') && !has('clipboard_working'))
+    " In the event that the clipboard isn't working, it's quite likely that
+    " the + and * registers will not be distinct from the unnamed register. In
+    " this case, a:event.regname will always be '' (empty string). However, it
+    " can be the case that `has('clipboard_working')` is false, yet `+` is
+    " still distinct, so we want to check them all.
+    let s:VimOSCYankPostRegisters = ['', '+', '*']
+    function! s:VimOSCYankPostCallback(event)
+        if a:event.operator == 'y' && index(s:VimOSCYankPostRegisters, a:event.regname) != -1
+            call OSCYankRegister(a:event.regname)
+        endif
+    endfunction
+    augroup VimOSCYankPost
+        autocmd!
+        autocmd TextYankPost * call s:VimOSCYankPostCallback(v:event)
+    augroup END
+endif
