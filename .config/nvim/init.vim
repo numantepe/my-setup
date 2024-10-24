@@ -51,7 +51,7 @@ nnoremap H :tabp<CR>
 nnoremap N :tab split<CR>
 
 tnoremap <leader>n <C-\><C-N>
-nnoremap T :tab terminal<CR>
+nnoremap <leader>t :tab terminal<CR>
 
 nnoremap < ye:!grep "<C-R>" *\(\(=[^=]\)\\|{\)\(\(\)\)" -i -n .<CR>
 nnoremap > ye:!grep "<C-R>" "" -i -n .<CR>
