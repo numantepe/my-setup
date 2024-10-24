@@ -61,7 +61,6 @@ call plug#begin()
   Plug 'mattn/vim-lsp-settings'
   Plug 'prabirshrestha/asyncomplete.vim'
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
-  Plug 'ojroques/vim-oscyank', {'branch': 'main'}
 call plug#end()
 
 let g:lsp_diagnostics_enabled = 0 
