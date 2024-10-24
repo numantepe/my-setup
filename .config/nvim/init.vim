@@ -4,7 +4,7 @@ colorscheme wildcharm
 
 set mouse=a
 
-autocmd BufEnter * lcd %:p:h
+autocmd BufEnter * if &buftype != 'terminal' | lcd %:p:h | endif 
 
 let mapleader = ","
 
@@ -51,7 +51,7 @@ nnoremap H :tabp<CR>
 nnoremap N :tab split<CR>
 
 tnoremap <leader>n <C-\><C-N>
-nnoremap <leader>t :tab terminal<CR>
+nnoremap T :tab terminal<CR>
 
 nnoremap < ye:!grep "<C-R>" *\(\(=[^=]\)\\|{\)\(\(\)\)" -i -n .<CR>
 nnoremap > ye:!grep "<C-R>" "" -i -n .<CR>
