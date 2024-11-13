@@ -47,14 +47,9 @@ nnoremap <C-U> <C-U>zz
 
 nnoremap L :tabn<CR>
 nnoremap H :tabp<CR>
-nnoremap N :tab split<CR>
 
 tnoremap <leader>n <C-\><C-N>
 nnoremap <leader>t :tab terminal<CR>
-
-nnoremap < ye:!grep "<C-R>" *\(\(=[^=]\)\\|{\)\(\(\)\)" -i -n .<CR>
-nnoremap > ye:!grep "<C-R>" "" -i -n .<CR>
-nnoremap <C-L> :!grep "<C-R>" "" -i -n .<CR>
 
 function! Yank(text) abort
   let escape = system('yank', a:text)
