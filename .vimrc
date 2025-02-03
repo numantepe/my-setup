@@ -51,32 +51,22 @@ nnoremap H :tabp<CR>
 tnoremap <leader>n <C-\><C-N>
 nnoremap <leader>t :tab terminal<CR>
 
-function! Yank(text) abort
-  let escape = system('yank', a:text)
-  if v:shell_error
-    echoerr escape
-  else
-    call writefile([escape], '/dev/tty', 'b')
-  endif
-endfunction
-noremap <silent> <Leader>y y:<C-U>call Yank(@0)<CR>
-
-function! CopyYank() abort
-  call Yank(join(v:event.regcontents, "\n"))
-endfunction
-autocmd TextYankPost * call CopyYank()
-
 call plug#begin()
   Plug 'prabirshrestha/vim-lsp'
   Plug 'mattn/vim-lsp-settings'
   Plug 'prabirshrestha/asyncomplete.vim'
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
   Plug 'keremc/asyncomplete-clang.vim'
+  Plug 'ojroques/vim-oscyank', {'branch': 'main'}
 call plug#end()
 
 let g:lsp_diagnostics_enabled = 0 
 let g:lsp_document_highlight_enabled = 0
 set signcolumn=no
+
+nmap <leader>c <Plug>OSCYankOperator
+nmap <leader>cc <leader>c_
+vmap <leader>c <Plug>OSCYankVisual
 
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
