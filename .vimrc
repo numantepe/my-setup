@@ -30,7 +30,6 @@ imap {;<CR> {<CR>};<ESC>O
 command! MakeTags !ctags -R .
 
 syntax on
-set number relativenumber
 
 set noundofile
 set noswapfile
