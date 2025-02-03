@@ -3,6 +3,8 @@ imap jj <Esc>
 set ttymouse=xterm2
 set mouse+=a
 
+set number
+
 autocmd BufEnter * if &buftype != 'terminal' | lcd %:p:h | endif 
 
 let mapleader = ","
