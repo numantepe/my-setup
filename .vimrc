@@ -1,6 +1,11 @@
 imap jj <Esc>
 
-set ttymouse=xterm2
+if exists('$TMUX')
+    set ttymouse=xterm2
+else
+    set ttymouse=sgr
+endif
+
 set mouse+=a
 
 set number
