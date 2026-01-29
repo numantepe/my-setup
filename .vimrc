@@ -57,6 +57,7 @@ nnoremap H :tabp<CR>
 tnoremap <leader>n <C-\><C-N>
 nnoremap <leader>t :tab terminal<CR>
 
+" :PlugInstall to install, :PlugClean to uninstall
 call plug#begin()
   Plug 'prabirshrestha/vim-lsp'
   Plug 'mattn/vim-lsp-settings'
@@ -64,6 +65,7 @@ call plug#begin()
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
   Plug 'keremc/asyncomplete-clang.vim'
   Plug 'ojroques/vim-oscyank', {'branch': 'main'}
+  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 let g:lsp_diagnostics_enabled = 0 
@@ -74,6 +76,7 @@ nmap <leader>c <Plug>OSCYankOperator
 nmap <leader>cc <leader>c_
 vmap <leader>c <Plug>OSCYankVisual
 
+" before using coc.nvim, comment these 3 commands
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
