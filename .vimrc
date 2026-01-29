@@ -64,7 +64,6 @@ call plug#begin()
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
   Plug 'keremc/asyncomplete-clang.vim'
   Plug 'ojroques/vim-oscyank', {'branch': 'main'}
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 let g:lsp_diagnostics_enabled = 0 
