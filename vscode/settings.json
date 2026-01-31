@@ -1,24 +1,80 @@
 {
+  /* ---------- General ---------- */
+  "workbench.startupEditor": "none",
+  "window.zoomLevel": 1,
+
+  /* ---------- Editor ---------- */
+  "editor.fontSize": 16,
+  "editor.lineHeight": 1.6,
+
+  /* ---------- Explorer ---------- */
+  "workbench.list.openMode": "singleClick",
+
+  /* ---------- VSCodeVim ---------- */
   "vim.leader": ",",
   "vim.useSystemClipboard": true,
 
+  /* Let VS Code handle Enter normally */
+  "vim.handleKeys": {
+    "<Enter>": false
+  },
+
+  /* Insert mode */
   "vim.insertModeKeyBindings": [
-    { "before": ["j", "j"], "after": ["<Esc>"] }
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }
   ],
 
+  /* Normal mode */
   "vim.normalModeKeyBindingsNonRecursive": [
-    { "before": [",", "n"], "commands": ["workbench.view.explorer"] },
-    { "before": [",", "m"], "commands": ["workbench.action.previousEditor"] },
+    /* Explorer */
+    {
+      "before": [",", "e"],
+      "commands": ["workbench.view.explorer"]
+    },
+    {
+      "before": [",", "r"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    },
 
-    { "before": [",", "."], "commands": ["workbench.action.focusNextGroup"] },
-    { "before": [",", "w"], "commands": ["workbench.action.focusAboveGroup"] },
-    { "before": [",", "a"], "commands": ["workbench.action.focusLeftGroup"] },
-    { "before": [",", "s"], "commands": ["workbench.action.focusBelowGroup"] },
-    { "before": [",", "d"], "commands": ["workbench.action.focusRightGroup"] },
+    /* Window / editor group navigation */
+    {
+      "before": [",", "."],
+      "commands": ["workbench.action.focusNextGroup"]
+    },
+    {
+      "before": [",", "w"],
+      "commands": ["workbench.action.focusAboveGroup"]
+    },
+    {
+      "before": [",", "a"],
+      "commands": ["workbench.action.focusLeftGroup"]
+    },
+    {
+      "before": [",", "s"],
+      "commands": ["workbench.action.focusBelowGroup"]
+    },
+    {
+      "before": [",", "d"],
+      "commands": ["workbench.action.focusRightGroup"]
+    },
 
-    { "before": ["H"], "commands": ["workbench.action.previousEditor"] },
-    { "before": ["L"], "commands": ["workbench.action.nextEditor"] },
+    /* Tab navigation */
+    {
+      "before": ["H"],
+      "commands": ["workbench.action.previousEditor"]
+    },
+    {
+      "before": ["L"],
+      "commands": ["workbench.action.nextEditor"]
+    },
 
-    { "before": [",", "t"], "commands": ["workbench.action.terminal.toggleTerminal"] }
+    /* Terminal */
+    {
+      "before": [",", "t"],
+      "commands": ["workbench.action.terminal.toggleTerminal"]
+    }
   ]
 }
