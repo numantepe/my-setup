@@ -9,3 +9,7 @@ Download binary needed for LSP:
 https://clangd.llvm.org/installation
 
 It is called clangd
+
+UPDATE:
+
+I actually use VS Code these days
